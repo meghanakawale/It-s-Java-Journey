@@ -1,82 +1,67 @@
-import java.util.Scanner;
-class Employee{
+import java.util.*;
+class Employee
+{
+String first,last;
+double sale;
+double totsal;
 
-    public 
-                String first_name;
-                String last_name;
-                String employee_id;               
-                String gender;
-                double salary;
-                
-    public  Employee(String f_name,String l_name,String e_id,String g,double s )
-	{
-        this.first_name=f_name;
-       this.last_name=l_name;
-        this.employee_id=e_id;
-        this.gender=g;
-        this.salary=s;
 
-    }
-    public void get_data(){
-        System.out.println("employee id     first_name         last_name      salary     gender");
-        System.out.println(employee_id+"       "+first_name+ "          "+last_name+"      " + salary+"           "+ gender);
-        
-    }
-    public void set_salary(double s1)
-	{
-        salary=s1;
-    }
-    public double get_salary()
-	{
-        return salary;
-    }
-    public double raise_salary()
-	{
-         salary+=salary*0.1;
-        System.out.println(salary);
-        return (salary*12);
-    }
+
+Employee(String fn,String ln,double sal)
+{
+first = fn;
+last = ln;
+sale = sal;
 }
-class constructor{
+public void setemployee(String f_name,String l_name,double salary)
+{
+first = f_name;
+last = l_name;
+sale = salary;
+}
+public double getemployee()
+{
+totsal = sale * 12 * 0.1;
+return totsal;
+}
+public void display()
+{
+System.out.println("-----Employee Information-----");
+System.out.println("Full Name :"+first+" "+last+"\t"+sale+"\nThe raise of 10 percentage in salary :"+totsal);
+}
+}
 
-    public static void main(String[] args) 
-	{
-        String f_n;
-        String l_n;
-        String e_id;
-        String g;
-        double s;
-        Scanner sc=new Scanner(System.in);
-        System.out.println("First name ");
-        f_n=sc.nextLine();
-        System.out.println("Last Name");
-        l_n=sc.nextLine();
-        System.out.println("Employee ID");
-        e_id=sc.nextLine();
-        System.out.println("Gender");
-        g=sc.nextLine();
-        System.out.println("Salary");
-        s=sc.nextDouble();
-       /* Employee[] obj1=new Employee[2];
-        for(int i;i<2;i++)
-		{
-			obj1[i]=new Employee(f_n,l_n,e_id,g,s);
-			obj1[i].set_salary(s);
-			 s=obj1.get_salary();
-			double s2=obj1.raise_salary();
-			obj1[i].set_salary(s2);
+class EmployeeTest
+{
+public static void main(String []args)
+{
+String fname1,lname1,fname2,lname2;
+double sal1,sal2;
 
-			obj1[i].get_data();
-        }
-		*/
-		
-		Employee obj1=new Employee(f_n,l_n,e_id,g,s);
-		obj1.set_salary(s);
-		//s=obj1.get_salary();
-		
-		Employee obj2 =new Employee(f_n,l_n,e_id,g,s);
-		double s2=obj1.raise_salary();
-		obj2.set_salary(s2);
-		obj2.get_data();
-	}      
+Scanner sc = new Scanner(System.in);
+
+System.out.println("Enter First Name :");
+fname1 = sc.next();
+System.out.println("Enter Last Name :");
+lname1 = sc.next();
+System.out.println("Enter Salary :");
+sal1 = sc.nextDouble();
+
+System.out.println("Enter First Name :");
+fname2 = sc.next();
+System.out.println("Enter Last Name :");
+lname2 = sc.next();
+System.out.println("Enter Salary :");
+sal2 = sc.nextDouble();
+
+Employee e1 = new Employee("a","b",20000);
+e1.setemployee(fname1,lname1,sal1);
+e1.getemployee();
+e1.display();
+
+Employee e2 = new Employee("c","D",24000);
+e2.setemployee(fname2,lname2,sal2);
+e2.getemployee();
+e2.display();
+}
 }
