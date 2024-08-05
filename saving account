@@ -1,0 +1,56 @@
+public class SavingsAccount {
+    // Static variable for the annual interest rate
+    private static double annualInterestRate;
+
+    // Instance variable for the savings balance
+    private double savingsBalance;
+
+    // Constructor to initialize savings balance
+    public SavingsAccount(double savingsBalance) {
+        this.savingsBalance = savingsBalance;
+    }
+
+    // Static method to set the annual interest rate
+    public static void modifyInterestRate(double newInterestRate) {
+        annualInterestRate = newInterestRate;
+    }
+
+    // Method to calculate monthly interest
+    public void calculateMonthlyInterest() {
+        double monthlyInterest = (savingsBalance * annualInterestRate) / 12;
+        savingsBalance += monthlyInterest;
+    }
+
+    // Method to get the current savings balance
+    public double getSavingsBalance() {
+        return savingsBalance;
+    }
+
+    public static void main(String[] args) {
+        // Set the annual interest rate to 4%
+        SavingsAccount.modifyInterestRate(0.04);
+
+        // Create two savings account objects
+        SavingsAccount account1 = new SavingsAccount(2000.00);
+        SavingsAccount account2 = new SavingsAccount(3000.00);
+
+        // Calculate and add monthly interest for each account
+        account1.calculateMonthlyInterest();
+        account2.calculateMonthlyInterest();
+
+        // Print the new balances
+        System.out.printf("Account 1 balance: %.2f\n", account1.getSavingsBalance());
+        System.out.printf("Account 2 balance: %.2f\n", account2.getSavingsBalance());
+
+        // Modify the interest rate to 5%
+        SavingsAccount.modifyInterestRate(0.05);
+
+        // Calculate and add monthly interest for each account again
+        account1.calculateMonthlyInterest();
+        account2.calculateMonthlyInterest();
+
+        // Print the new balances
+        System.out.printf("Account 1 balance after rate change: %.2f\n", account1.getSavingsBalance());
+        System.out.printf("Account 2 balance after rate change: %.2f\n", account2.getSavingsBalance());
+    }
+}
