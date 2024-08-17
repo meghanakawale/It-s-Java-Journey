@@ -1,0 +1,39 @@
+public class House {
+
+    
+    public void calculateArea(double length, double width) {
+        
+        class Room {
+            private double length;
+            private double width;
+
+            
+            public Room(double length, double width) {
+                this.length = length;
+                this.width = width;
+            }
+
+            
+            public double getArea() {
+                return length * width;
+            }
+        }
+
+        
+        Room room = new Room(length, width);
+
+        
+        double area = room.getArea();
+
+        
+        System.out.println("The area of the room is: " + area);
+    }
+
+    public static void main(String[] args) {
+        House house = new House();
+        
+        double length = 5.0;
+        double width = 4.0;
+        house.calculateArea(length, width);
+    }
+}
